@@ -24,22 +24,52 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          HeaderView()
+        appBar: AppBar(
+          actions: [HeaderView()],
+        ),
+        body:  Center(
+            child: ListView(
+              children: [
+                BannerSlideView(),
+                SizedBox(height: 10.0,),
+                MainMenuView(),
+                StoryView(),
+                ProductView()
+              ],
+            )
+        ),
+      bottomNavigationBar:Obx(()=>
+      BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.paste_outlined,),
+            label: 'Shopee Feed',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.live_tv),
+            label: 'Shopee Live',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_active_outlined),
+            label: 'Thông Báo',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Tôi',
+          ),
         ],
-      ),
-      body: Center(
-        child: ListView(
-          children: [
-            BannerSlideView(),
-            SizedBox(height: 10.0,),
-            MainMenuView(),
-            StoryView(),
-            ProductView()
-          ],
-        )
-      ),
+        currentIndex: controller.selectedIndex.value,
+        selectedItemColor: Colors.orange,
+        showSelectedLabels: true,
+        unselectedItemColor: Colors.grey[600],
+        onTap: (value) {
+          controller.onClickBottomNavigationBar(value);
+        },
+      )),
     );
   }
 }

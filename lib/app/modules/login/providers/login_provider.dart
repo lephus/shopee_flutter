@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shoseshop/app/data/BASE_URL_API.dart';
 
 class LoginProvider extends GetConnect {
   var storage = GetStorage();
@@ -9,7 +10,7 @@ class LoginProvider extends GetConnect {
         'email': email,
         'password' : password
       };
-      final response = await post("http://10.0.2.2:5000/api/customer/login", data);
+      final response = await post(BASE_URL_API().SERVER+BASE_URL_API().API_LOGIN, data);
       if (response.status.hasError){
         return Future.error(response.statusText);
       }else{

@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
-
+import 'package:shoseshop/app/modules/product/product_model.dart';
+import 'package:shoseshop/app/modules/product/providers/product_provider.dart';
 class ProductController extends GetxController {
   //TODO: Implement ProductController
+  List<ProductModel> productViewModel = [];
 
-  final count = 0.obs;
   @override
   void onInit() {
+    getProduct();
     super.onInit();
   }
 
@@ -16,5 +18,10 @@ class ProductController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+
+  void getProduct(){
+    ProductProvider().getProduct().then((value){
+      productViewModel = value as List<ProductModel>;
+    });
+  }
 }

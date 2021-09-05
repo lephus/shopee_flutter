@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
+import 'package:shoseshop/app/modules/bannerSlide/providers/slide_model_provider.dart';
+import 'package:shoseshop/app/modules/bannerSlide/slide_model_model.dart';
 
 class BannerSlideController extends GetxController {
   //TODO: Implement BannerSlideController
-
-  final count = 0.obs;
+  List<SlideModel> imgList = [];
   @override
   void onInit() {
+    print('123');
+    getSlide();
     super.onInit();
   }
 
@@ -16,5 +19,10 @@ class BannerSlideController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+
+  void getSlide(){
+    SlideModelProvider().getSlide().then((value){
+      imgList = value as List<SlideModel>;
+    });
+  }
 }

@@ -2,14 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/banner_slide_controller.dart';
-final List<String> imgList = [
-  "https://cf.shopee.vn/file/641f60c16cba7c75e0c355baa9e548b6",
-  "https://www.phanmemninja.com/wp-content/uploads/2019/12/cach-ban-hang-tren-shopee-mall-1-1-768x432.jpg",
-  "https://storage.googleapis.com/ops-shopee-files-live/live/affiliate-blog/2020/10/cach-ban-hang-tren-shopee.jpg",
-  "https://inboundmarketing.vn/wp-content/uploads/2020/08/tuyet-chieu-lam-tang-gap-doi-doanh-thu-ban-hang-tren-shopee-mua-dich-1.jpg",
-  "https://thehekhoinghiep.com/wp-content/uploads/2018/09/Cach-ban-hang-tren-Shopee-hieu-qua-nhat-2.jpg",
-  "https://suno.vn/blog/wp-content/uploads/2021/01/phi-thanh-toan-shopee-thumb-1593577116904-1400x695.jpg"
-];
 class BannerSlideView extends GetView<BannerSlideController> {
   @override
   Widget build(BuildContext context) {
@@ -32,10 +24,10 @@ class BannerSlideView extends GetView<BannerSlideController> {
             viewportFraction: 1.0,
             autoPlay: true,
           ),
-          items: imgList
+          items: controller.imgList
               .map(
                 (item) => Image.network(
-              item,
+              item.toString(),
               fit: BoxFit.cover,
               width: double.infinity,
             ),
